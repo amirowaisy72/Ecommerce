@@ -129,7 +129,7 @@ const OtherNavs = () => {
             </div>
           </li>
           <li className="nav-item dropdown w-100 w-lg-auto">
-            <Link
+            <a
               className="nav-link dropdown-toggle"
               href="#"
               role="button"
@@ -137,7 +137,7 @@ const OtherNavs = () => {
               aria-expanded="false"
             >
               Account
-            </Link>
+            </a>
             <ul className="dropdown-menu">
               <li>
                 <Link className="dropdown-item" to="/store/account/signin">
@@ -157,55 +157,49 @@ const OtherNavs = () => {
                   Forgot Password
                 </Link>
               </li>
-              <li className="dropdown-submenu dropend">
-                <Link
-                  className="dropdown-item dropdown-list-group-item dropdown-toggle"
-                  href="#"
-                >
-                  My Account
+            </ul>
+          </li>
+          <li className="nav-item dropdown w-100 w-lg-auto">
+            <a
+              className="nav-link dropdown-toggle"
+              href="#"
+              role="button"
+              data-bs-toggle="dropdown"
+              aria-expanded="false"
+            >
+              My Account
+            </a>
+            <ul className="dropdown-menu">
+              <li>
+                <Link className="dropdown-item" to="/store/myAccount/orders">
+                  Orders
                 </Link>
-                <ul className="dropdown-menu">
-                  <li>
-                    <Link
-                      className="dropdown-item"
-                      to="/store/myAccount/orders"
-                    >
-                      Orders
-                    </Link>
-                  </li>
-                  <li>
-                    <Link
-                      className="dropdown-item"
-                      to="/store/myAccount/settings"
-                    >
-                      Settings
-                    </Link>
-                  </li>
-                  <li>
-                    <Link
-                      className="dropdown-item"
-                      to="/store/myAccount/address"
-                    >
-                      Address
-                    </Link>
-                  </li>
-                  <li>
-                    <Link
-                      className="dropdown-item"
-                      to="/store/myAccount/paymentMethod"
-                    >
-                      Payment Method
-                    </Link>
-                  </li>
-                  <li>
-                    <Link
-                      className="dropdown-item"
-                      to="/store/myAccount/notifications"
-                    >
-                      Notification
-                    </Link>
-                  </li>
-                </ul>
+              </li>
+              <li>
+                <Link className="dropdown-item" to="/store/myAccount/settings">
+                  Settings
+                </Link>
+              </li>
+              <li>
+                <Link className="dropdown-item" to="/store/myAccount/address">
+                  Address
+                </Link>
+              </li>
+              <li>
+                <Link
+                  className="dropdown-item"
+                  to="/store/myAccount/paymentMethod"
+                >
+                  Payment Method
+                </Link>
+              </li>
+              <li>
+                <Link
+                  className="dropdown-item"
+                  to="/store/myAccount/notifications"
+                >
+                  Notification
+                </Link>
               </li>
             </ul>
           </li>

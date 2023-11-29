@@ -1,6 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import Modal from "./Modal";
+import Modal2 from "../Modal/Index";
 
 const Index = () => {
   return (
@@ -254,6 +255,7 @@ const Index = () => {
         </div>
       </section>
       <Modal />
+      <Modal2 />
     </>
   );
 };
