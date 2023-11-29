@@ -1,0 +1,69 @@
+I am going to discuss whole system with you.
+Please extract all entities from it, 
+Normalize or Embed Data Based on Relationships, 
+Think About Query Patterns,
+Avoid Redundant Data,
+Use Flexible Schemas,
+Plan for Growth,
+Apply indexing where needed,
+Version my Schemas,
+Use Mongoose Middleware, 
+Document Your Schemas,
+and do all necessary things to make this complex data structure very easy to work on.
+
+Now i am going to discuss my frontend which i already designed
+
+Description :
+
+Home Page :
+i have following things on my homepage
+-> Categories
+-> Sub Categories (maybe in future i will add more sub categories)
+->Slider images (3 images)
+->Featured Categories Section
+->Popular Categories Section
+->Promo products section (The products with special discounts where time is running out)
+->Shop Cart
+->Search Products 
+->Choose location
+
+User Account Page
+->Orders (product, order ID, Date, Items, status, amount)
+->Account Settings (name, email, phone, password)
+->User Address (Home, Office, Other)
+->Payment methods (Visa, Mastercard etc)
+->Notifications (Email Notifications, Order updates, Website Notification)
+
+My Wishlist Page :
+Product, amount, status, actions, remove
+
+Stores Page (these are the stores of suppliers/sellers on my system because my system is collection of buyers and sellers)
+->store name
+->store photo/logo
+->store product type (i mean which category of products they are selling)
+->other all necassary details about the store and supplier 
+
+Main Dashboard
+->Products 
+->create product(title, category, weight, units, images, descriptions, in-stock, product code, product SKU, status : active, disabled , product price:regular price,seller price , meta data:title,description)
+->categories(icon, name, product, status, status:published,unpublished)
+->search category
+->create category(image, name, slug, parent category, date, descriptions, active:disabled , meta data:title,description)
+->orders(image, order name, customer, date & time, payment, status:success,pending , amount)
+->sellers/vendors(sore name, store id, email, gross sale, earning, )
+->customers(name, profile, email, purchase date, phone, spent)
+->reviews(product, name, reviews, rating, date)
+->dashboard profile(profile photo, notifications, settings)
+
+Sellers Dashboard 
+Please little improwise main dashboard to create sellers dashboard 
+
+This is my over all system. 
+maybe i have skipped many things, thats why try to create in such a way that i can later on add missed things easily
+
+Note: I will work with mongodb atlas
+
+
+
+Link to chatGPT solution
+https://chat.openai.com/share/9b00a2f7-7778-417a-bff6-69c8202311b9
