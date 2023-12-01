@@ -19,9 +19,9 @@ const Index = () => {
               }}
             >
               <div className="card-body p-lg-12">
-                <h1>Welcome back! FreshCart</h1>
+                <h1>Welcome back! Owaisy Shopping Center</h1>
                 <p>
-                  FreshCart is simple & clean design for developer and designer.
+                  OSC is simple & clean design for developer and designer.
                 </p>
                 <a href="#" className="btn btn-primary">
                   Create Product
