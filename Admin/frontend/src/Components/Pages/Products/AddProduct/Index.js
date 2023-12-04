@@ -1,5 +1,9 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import ProductImages from "./ProductImages/Index";
+import ProductDescription from "./ProductDescription/Index";
+import InStock from "./InStock/Index";
+import Keywords from './Keywords/Index'
 
 const Index = () => {
   return (
@@ -76,47 +80,10 @@ const Index = () => {
                       </option>
                     </select>
                   </div>
+                  <Keywords />
+                  <ProductImages />
                   {/* <!-- input --> */}
-                  <div className="mb-3 col-lg-6">
-                    <label className="form-label">Weight</label>
-                    <input
-                      type="text"
-                      className="form-control"
-                      placeholder="Weight"
-                      required
-                    />
-                  </div>
-                  {/* <!-- input --> */}
-                  <div className="mb-3 col-lg-6">
-                    <label className="form-label">Units</label>
-                    <select className="form-select">
-                      <option selected>Select Units</option>
-                      <option value="1">1</option>
-                      <option value="2">2</option>
-                      <option value="3">3</option>
-                    </select>
-                  </div>
-                  <div>
-                    <div className="mb-3 col-lg-12 mt-5">
-                      {/* <!-- heading --> */}
-                      <h4 className="mb-3 h5">Product Images</h4>
-
-                      {/* <!-- input --> */}
-                      <form
-                        action="#"
-                        className="d-block dropzone border-dashed rounded-2 "
-                      >
-                        <div className="fallback">
-                          <input name="file" type="file" multiple />
-                        </div>
-                      </form>
-                    </div>
-                  </div>
-                  {/* <!-- input --> */}
-                  <div className="mb-3 col-lg-12 mt-5">
-                    <h4 className="mb-3 h5">Product Descriptions</h4>
-                    <div className="py-8" id="editor"></div>
-                  </div>
+                  <ProductDescription />
                 </div>
               </div>
             </div>
@@ -127,18 +94,7 @@ const Index = () => {
               {/* <!-- card body --> */}
               <div className="card-body p-6">
                 {/* <!-- input --> */}
-                <div className="form-check form-switch mb-4">
-                  <input
-                    className="form-check-input"
-                    type="checkbox"
-                    role="switch"
-                    id="flexSwitchStock"
-                    checked
-                  />
-                  <label className="form-check-label" for="flexSwitchStock">
-                    In Stock
-                  </label>
-                </div>
+                <InStock />
                 {/* <!-- input --> */}
                 <div>
                   <div className="mb-3">
@@ -248,9 +204,9 @@ const Index = () => {
             </div>
             {/* <!-- button --> */}
             <div className="d-grid">
-              <a href="#" className="btn btn-primary">
+              <Link href="#" className="btn btn-primary">
                 Create Product
-              </a>
+              </Link>
             </div>
           </div>
         </div>

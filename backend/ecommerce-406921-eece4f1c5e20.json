@@ -1,0 +1,13 @@
+{
+  "type": "service_account",
+  "project_id": "ecommerce-406921",
+  "private_key_id": "eece4f1c5e2058bfde5eec4c44267a5e1aa6e3d4",
+  "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvQIBADANBgkqhkiG9w0BAQEFAASCBKcwggSjAgEAAoIBAQCoRIKn6jyQxS8t\noTp4C3SEyIFe+LYdRO7aeoytWkpvAZq3uXUEm0sgBHszYTmhdBeBurrUecUdDN3M\nEpB7J3XJgl6M7hD4GyIiE3cxPjxDgVALq+W2VU6wigqsWSCaAcwbTGftxQepDx46\njQyRFqdtTiqH22usfuIGijlfl9+bipVBLlrxKgl6OK2KppovsYtz947GZihkX4Vp\npuiswwqh39wgjG27wT9D4pCSHF+/KRQAYZXnpJ7IesDw1wLrP+CulNJSV5J6NFIs\nQBd2fndyqK8pZNNEgW675J1RsCgcRINen3KGGM5E0nUWpltPZk6hP3C4zhXOvwrt\nGp6zxZvZAgMBAAECggEAGV/zgBTvuzkxKyVkJtQ7ZwbBk6vX8sQBbQsMCdxS2ziX\nt1sNTXuJsbNbTN09jp5uKQ8au439bqsRC4RFK31A4vl4/rGr925IEHF1CQUEm311\nr7zlcECfFDpM776lDvR0bi1wgseypwjzmwrIOVz8NJyUB1bMfv/HYAsaKdNCUjcu\nIikPtLA8Ma5rVayPk+/BJCW+cVOmzqnFOGrleYsl+V0iBbDTKGZqmiBTLYa3xusJ\nSNF34Uj4f68jnTKjZiGDXngUOsMYvGc275+sFg15Nwhh1WfCCE3vEteDEoV4QaTA\n7h26j/utJAsP9fuUdcW/Dsd5Gaz8z+nsS8a+TE7i8QKBgQDckU0V498Pcr0y1KE7\nMWotmkNhND0FK2K7nLC6eHQHWmb2GrD5n/p1bofO5lGgNSmzMgF/L9zKNwDcTLK4\ndlWtGlWIfbYaqM8qSeH0+BTFFt/HhU0HvydLgNco09Wbv86kdZCjRDn0tANAA3D/\nEVMmBdSFQu20MoXqJyAgOoPU/QKBgQDDTGg6aYkEfwj2Iv91aZYpZjR8jCy1b/BU\n+RJQYo4tTn09gInCWxg6Q7q4McPthsO32B8N0Enrz/AUwqYnQqpJIYLMsm4kI1qN\nevJpUeWcLCIyOK762Bz/IKsGjuJF7YRwdoyabCn9z7Jgigmmf1hgQlli8ouxCBcj\nRJDVYIpnDQKBgQCr9z06i+cljDemodDy7Zvy4gsWhjvtA95+l7PSLoeIFBuiVT0V\n4nzLgdmwnjGVzt0sMRipqQ9jOW8aU1IkL16tD5MQT7LjJioetmvNKn5HC4Z9cJiW\nKZrhaxpVYpNwUyMxZdfW8yKcfpzqE8TNmRxS0MjY/U2G6L0vykFp3zVZoQKBgCiW\nVILvM96PWBlvJJAOJXrtFrNbnl8GqHfAW6IBGXMpALYrZHXT4LEbKk7laMaQX1Rx\nweJpCzPKvyZRXZ6DKEiSglBwNJumDUeh6Ych0gom0eSGCzdueng7Hc/7GeNWfVOy\nD354RDHPXE7b4S2NAZzfrRv3NDjSaZyWv1LZAWpxAoGAYpDei+Ubx6QJ0pyCoEqd\nGCejdCmd/v4N+y8enNr9m0dCVWQAXO79XE9/K1eiIDiIwm4+qePD6XCk/xVVoe/c\ndLfcY8sTQPJN2Vqr0W5ta8KTd8tldkf6KVGKkO4r+qmr/ql7D1c76NP+zbSMVRpL\njIdm3hLUACW5sxpFgnEU2lU=\n-----END PRIVATE KEY-----\n",
+  "client_email": "owaisy-shopping-center@ecommerce-406921.iam.gserviceaccount.com",
+  "client_id": "112011861039897216971",
+  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+  "token_uri": "https://oauth2.googleapis.com/token",
+  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/owaisy-shopping-center%40ecommerce-406921.iam.gserviceaccount.com",
+  "universe_domain": "googleapis.com"
+}

@@ -1,0 +1,3 @@
+ok now i right clicked on my folder, goto share -> restricted: turned it "Anyone with the link"
+and the previous error is gone. but there is a new error 
+{"success":false,"error":"Insufficient permissions for the specified parent."}

@@ -1,0 +1,8 @@
+.cropper-container {
+    position: relative;
+  }
+  
+  .cropper-container > div {
+    height: 100%;
+  }
+  
