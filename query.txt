@@ -1,3 +1,55 @@
-ok now i right clicked on my folder, goto share -> restricted: turned it "Anyone with the link"
-and the previous error is gone. but there is a new error 
-{"success":false,"error":"Insufficient permissions for the specified parent."}
+import React, { useState } from 'react';
+
+const Index = () => {
+  const [inputValue, setInputValue] = useState('');
+  const [keywords, setKeywords] = useState([]);
+
+  const handleInputChange = (e) => {
+    setInputValue(e.target.value);
+  };
+
+  const handleKeyPress = (e) => {
+    if (e.key === ' ' && inputValue.trim() !== '') {
+      // Add the keyword when space is pressed
+      setKeywords((prevKeywords) => [...prevKeywords, inputValue.trim()]);
+      setInputValue(''); // Clear the input field
+    }
+  };
+
+  return (
+    <div>
+      <div style={{ marginBottom: '10px' }}>
+        <strong>Keywords:</strong>
+        {keywords.map((keyword, index) => (
+          <span
+            key={index}
+            style={{
+              display: 'inline-block',
+              backgroundColor: '#e0e0e0',
+              borderRadius: '5px',
+              padding: '5px',
+              margin: '0 5px',
+            }}
+          >
+            {keyword}
+          </span>
+        ))}
+      </div>
+      <input
+        type="text"
+        className="form-control"
+        value={inputValue}
+        onChange={handleInputChange}
+        onKeyUp={handleKeyPress}
+        placeholder="Type a keyword"
+        style={{ marginBottom: '10px' }}
+      />
+      <button className='btn btn-success'>Add Keyword</button>
+    </div>
+  );
+};
+
+export default Index;
+
+
+on Add Keyword button click, add types keyword into keywords list
