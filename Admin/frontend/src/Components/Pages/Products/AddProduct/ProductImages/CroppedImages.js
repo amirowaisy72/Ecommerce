@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import "./crop.css"; // Import a separate CSS file for styling
 
 const CroppedImages = ({ croppedImages, setCroppedImages }) => {
   // State to keep track of the currently selected image index
@@ -108,7 +109,6 @@ const CroppedImages = ({ croppedImages, setCroppedImages }) => {
 
   return (
     <div>
-      <h4>Uploaded Images</h4>
       {rows.map((row, rowIndex) => (
         <div key={rowIndex} style={{ display: "flex", marginBottom: "10px" }}>
           {row.map((croppedImage, index) => (

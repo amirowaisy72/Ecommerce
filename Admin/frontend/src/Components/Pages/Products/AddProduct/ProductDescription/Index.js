@@ -12,9 +12,10 @@ const Index = () => {
   return (
     <div className="mb-3 col-lg-12 mt-5">
       <h4 className="mb-3 h5">Product Descriptions</h4>
-      <div className="py-8">
+      <div>
         <ReactQuill
-          theme="snow" // Specify the theme (you can use "bubble" or "snow")
+          style={{ height: "200px" }}
+          theme="snow"
           value={editorContent}
           onChange={handleEditorChange}
         />

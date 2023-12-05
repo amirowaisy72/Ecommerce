@@ -52,7 +52,7 @@ const Index = () => {
         placeholder="Type a keyword"
         style={{ marginBottom: '10px' }}
       />
-      <button onClick={handleAddKeyword} className='btn btn-success'>Add Keyword</button>
+      <button onClick={handleAddKeyword} className='btn btn-success btn-sm'>Add Keyword</button>
     </div>
   );
 };
