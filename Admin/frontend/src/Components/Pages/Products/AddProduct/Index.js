@@ -12,15 +12,15 @@ import MetaData from "./MetaData/Index";
 
 const Index = () => {
   const [validationResults, setValidationResults] = useState({
-    Title: "Title field is required",
-    Category: "Please select category",
-    Keywords: "Please add some keywords",
-    ProductImages: "Please upload some product images",
-    ProductDescription: "Please describe product description",
-    InStock: "",
-    ProductCode: "Product code section required",
-    ProductPrice: "Product price section required",
-    MetaData: "Metadata section required",
+    Title: { error: "Title field is required", data: "" },
+    Category: { error: "Please select category", data: "" },
+    Keywords: { error: "Please add some keywords", data: "" },
+    ProductImages: { error: "Please upload some product images", data: "" },
+    ProductDescription: { error: "Please describe product", data: "" },
+    InStock: { error: "", data: "" },
+    ProductCode: { error: "Product code section required", data: "" },
+    ProductPrice: { error: "Product price section required", data: "" },
+    MetaData: { error: "Metadata section required", data: "" },
   });
 
   const [submitResponse, setSubmitResponse] = useState("");
@@ -28,14 +28,15 @@ const Index = () => {
   const handleSubmit = () => {
     // Check for errors in validationResults
     const errors = Object.entries(validationResults).filter(
-      ([key, error]) => error !== ""
+      ([key, value]) => value.error !== ""
     );
 
     if (errors.length > 0) {
       // Display errors if any
-      const errorList = errors.map(([key, error]) => (
+      const errorList = errors.map(([key, value]) => (
         <li key={key}>
-          <strong>{key}:</strong> {error}
+          <strong>{key}:</strong>{" "}
+          {typeof value === "object" ? value.error : value}
         </li>
       ));
       setSubmitResponse(<ul className="list-unstyled">{errorList}</ul>);
@@ -61,10 +62,12 @@ const Index = () => {
                 <h4 className="mb-4 h5">Product Information</h4>
                 <div className="row">
                   <Title setValidationResults={setValidationResults} />
-                  <Category />
-                  <Keywords />
-                  <ProductImages />
-                  <ProductDescription />
+                  <Category setValidationResults={setValidationResults} />
+                  <Keywords setValidationResults={setValidationResults} />
+                  <ProductImages setValidationResults={setValidationResults} />
+                  <ProductDescription
+                    setValidationResults={setValidationResults}
+                  />
                 </div>
               </div>
             </div>
@@ -74,12 +77,12 @@ const Index = () => {
             <div className="card mb-6 card-lg">
               {/* <!-- card body --> */}
               <div className="card-body p-6">
-                <InStock />
-                <ProductCode />
+                <InStock setValidationResults={setValidationResults} />
+                <ProductCode setValidationResults={setValidationResults} />
               </div>
             </div>
-            <ProductPrice />
-            <MetaData />
+            <ProductPrice setValidationResults={setValidationResults} />
+            <MetaData setValidationResults={setValidationResults} />
             {/* <!-- button --> */}
             <div className="d-grid">
               <Link to="#" onClick={handleSubmit} className="btn btn-primary">
@@ -93,7 +96,18 @@ const Index = () => {
                       : "text-danger"
                   }
                 >
+                  <h3>Errors</h3>
                   {submitResponse}
+                  {/* Loop through validationResults and display data */}
+                  <h3>Data Received</h3>
+                  {Object.entries(validationResults).map(([key, value]) => (
+                    <div key={key}>
+                      <strong>{key}:</strong>{" "}
+                      {typeof value.data === "object"
+                        ? JSON.stringify(value.data)
+                        : value.data}
+                    </div>
+                  ))}
                 </div>
               )}
             </div>

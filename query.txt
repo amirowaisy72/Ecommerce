@@ -1,7 +1,32 @@
-{submitResponse && (
-                <div className="text-danger">{submitResponse}</div>
-              )}
+import React from "react";
 
-display errors in beautiful way
-i mean in list view or any professional viewall errors are displayed very plain
-but if threre is no error then no need to display response in list view, you can display plain
+const Index = () => {
+  return (
+    <div className="card mb-6 card-lg">
+      {/* <!-- card body --> */}
+      <div className="card-body p-6">
+        <h4 className="mb-4 h5">Meta Data</h4>
+        {/* <!-- input --> */}
+        <div className="mb-3">
+          <label className="form-label">Meta Title</label>
+          <input type="text" className="form-control" placeholder="Title" />
+        </div>
+
+        {/* <!-- input --> */}
+        <div className="mb-3">
+          <label className="form-label">Meta Description</label>
+          <textarea
+            className="form-control"
+            rows="3"
+            placeholder="Meta Description"
+          ></textarea>
+        </div>
+      </div>
+    </div>
+  );
+};
+
+export default Index;
+
+
+define onchange handler

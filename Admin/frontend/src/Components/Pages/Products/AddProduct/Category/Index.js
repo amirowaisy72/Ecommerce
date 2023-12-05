@@ -1,6 +1,6 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 
-const Index = () => {
+const Index = ({ setValidationResults }) => {
   const [selectedCategory, setSelectedCategory] = useState("");
   const [newCategory, setNewCategory] = useState("");
   const [categories, setCategories] = useState([
@@ -8,6 +8,29 @@ const Index = () => {
     "Snacks & Munchies",
     "Fruits & Vegetables",
   ]);
+
+  useEffect(() => {
+    if (
+      selectedCategory === "Select a Category" ||
+      selectedCategory === "Add New Category" ||
+      selectedCategory === ""
+    ) {
+      const newCategory = {
+        error: "Please select category",
+        data: selectedCategory,
+      };
+
+      setValidationResults((prevResults) => {
+        return { ...prevResults, Category: newCategory };
+      });
+    } else {
+      const newCategory = { error: "", data: selectedCategory };
+
+      setValidationResults((prevResults) => {
+        return { ...prevResults, Category: newCategory };
+      });
+    }
+  }, [selectedCategory, setValidationResults]);
 
   const handleCategoryChange = (e) => {
     setSelectedCategory(e.target.value);

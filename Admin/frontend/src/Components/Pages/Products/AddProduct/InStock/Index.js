@@ -1,7 +1,16 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 
-const YourComponent = () => {
+const YourComponent = ({ setValidationResults }) => {
   const [isChecked, setIsChecked] = useState(true);
+
+  useEffect(() => {
+    // If title is not empty, remove the error
+    const newState = { error: "", data: isChecked };
+
+    setValidationResults((prevResults) => {
+      return { ...prevResults, InStock: newState };
+    });
+  }, [isChecked, setValidationResults]);
 
   const handleSwitchChange = () => {
     setIsChecked(!isChecked);

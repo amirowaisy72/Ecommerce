@@ -1,8 +1,30 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 
-const Index = () => {
+const Index = ({ setValidationResults }) => {
   const [regularPrice, setRegularPrice] = useState("");
   const [salePrice, setSalePrice] = useState("");
+
+  useEffect(() => {
+    if (regularPrice === "" || salePrice === "") {
+      const newSection = {
+        error: "Product price section required",
+        data: { regularPrice, salePrice },
+      };
+
+      setValidationResults((prevResults) => {
+        return { ...prevResults, ProductPrice: newSection };
+      });
+    } else {
+      const newSection = {
+        error: "",
+        data: { regularPrice, salePrice },
+      };
+
+      setValidationResults((prevResults) => {
+        return { ...prevResults, ProductPrice: newSection };
+      });
+    }
+  }, [regularPrice, salePrice, setValidationResults]);
 
   const handleRegularPriceChange = (e) => {
     const inputValue = e.target.value.replace(/\D/g, ""); // Remove non-numeric characters

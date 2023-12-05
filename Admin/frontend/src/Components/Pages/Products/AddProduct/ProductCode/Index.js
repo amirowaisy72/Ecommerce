@@ -1,6 +1,46 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 
-const Index = () => {
+const Index = ({ setValidationResults = { setValidationResults } }) => {
+  const [productCode, setProductCode] = useState("");
+  const [productSKU, setProductSKU] = useState("");
+  const [status, setStatus] = useState("Active");
+
+  useEffect(() => {
+    if (productCode === "" || productSKU === "") {
+      // If title is empty, set the error
+      const newSection = {
+        error: "Product code section required",
+        data: { productCode, productSKU, status },
+      };
+
+      setValidationResults((prevResults) => {
+        return { ...prevResults, ProductCode: newSection };
+      });
+    } else {
+      // If title is not empty, remove the error
+      const newSection = {
+        error: "",
+        data: { productCode, productSKU, status },
+      };
+
+      setValidationResults((prevResults) => {
+        return { ...prevResults, ProductCode: newSection };
+      });
+    }
+  }, [productCode, productSKU, status, setValidationResults]);
+
+  const handleProductCodeChange = (e) => {
+    setProductCode(e.target.value);
+  };
+
+  const handleProductSKUChange = (e) => {
+    setProductSKU(e.target.value);
+  };
+
+  const handleStatusChange = (e) => {
+    setStatus(e.target.value);
+  };
+
   return (
     <div>
       <div className="mb-3">
@@ -8,7 +48,9 @@ const Index = () => {
         <input
           type="text"
           className="form-control"
-          placeholder="Enter Product Title"
+          placeholder="Enter Product Code"
+          value={productCode}
+          onChange={handleProductCodeChange}
         />
       </div>
       {/* <!-- input --> */}
@@ -17,7 +59,9 @@ const Index = () => {
         <input
           type="text"
           className="form-control"
-          placeholder="Enter Product Title"
+          placeholder="Enter Product SKU"
+          value={productSKU}
+          onChange={handleProductSKUChange}
         />
       </div>
       {/* <!-- input --> */}
@@ -30,12 +74,13 @@ const Index = () => {
           <input
             className="form-check-input"
             type="radio"
-            name="inlineRadioOptions"
-            id="inlineRadio1"
-            value="option1"
-            checked
+            name="status"
+            id="activeStatus"
+            value="Active"
+            checked={status === "Active"}
+            onChange={handleStatusChange}
           />
-          <label className="form-check-label" for="inlineRadio1">
+          <label className="form-check-label" htmlFor="activeStatus">
             Active
           </label>
         </div>
@@ -44,11 +89,13 @@ const Index = () => {
           <input
             className="form-check-input"
             type="radio"
-            name="inlineRadioOptions"
-            id="inlineRadio2"
-            value="option2"
+            name="status"
+            id="disabledStatus"
+            value="Disabled"
+            checked={status === "Disabled"}
+            onChange={handleStatusChange}
           />
-          <label className="form-check-label" for="inlineRadio2">
+          <label className="form-check-label" htmlFor="disabledStatus">
             Disabled
           </label>
         </div>

@@ -1,23 +1,29 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 
 const Index = ({ setValidationResults }) => {
   const [title, setTitle] = useState("");
 
+  useEffect(() => {
+    if (title === "") {
+      // If title is empty, set the error
+      const newTitle = { error: "Title field required", data: title };
+
+      setValidationResults((prevResults) => {
+        return { ...prevResults, Title: newTitle };
+      });
+    } else {
+      // If title is not empty, remove the error
+      const newTitle = { error: "", data: title };
+
+      setValidationResults((prevResults) => {
+        return { ...prevResults, Title: newTitle };
+      });
+    }
+  }, [title, setValidationResults]);
+
   const handleChange = (e) => {
     const newTitle = e.target.value;
     setTitle(newTitle);
-
-    if (newTitle.trim() !== "") {
-      // If title is not empty, remove the error
-      setValidationResults((prevResults) => {
-        return { ...prevResults, Title: "" };
-      });
-    } else {
-      // If title is empty, set the error
-      setValidationResults((prevResults) => {
-        return { ...prevResults, Title: "Title field required" };
-      });
-    }
   };
 
   return (
