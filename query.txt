@@ -1,32 +1,30 @@
-import React from "react";
-
-const Index = () => {
-  return (
-    <div className="card mb-6 card-lg">
-      {/* <!-- card body --> */}
-      <div className="card-body p-6">
-        <h4 className="mb-4 h5">Meta Data</h4>
-        {/* <!-- input --> */}
-        <div className="mb-3">
-          <label className="form-label">Meta Title</label>
-          <input type="text" className="form-control" placeholder="Title" />
-        </div>
-
-        {/* <!-- input --> */}
-        <div className="mb-3">
-          <label className="form-label">Meta Description</label>
-          <textarea
-            className="form-control"
-            rows="3"
-            placeholder="Meta Description"
-          ></textarea>
-        </div>
-      </div>
-    </div>
-  );
-};
-
-export default Index;
+<select
+            className="form-select"
+            value={`${selectedCategoryData.parent}|${selectedCategoryData.child}`}
+            onChange={handleCategoryChange}
+          >
+            <option value="Select a Category" disabled>
+              Select a Category
+            </option>
+            {categories.map((category) => (
+              <optgroup label={category.parent} key={category.parent}>
+                {category.children.map((child) => (
+                  <option key={child} value={`${category.parent}|${child}`}>
+                    {child}
+                  </option>
+                ))}
+              </optgroup>
+            ))}
+          </select>
 
 
-define onchange handler
+there is issue with this block of code.
+options are being displayed from optgroup directly
+and as usual it is displaying first option initially which "Joggers"
+it is not starting from 
+<option value="Select a Category" disabled>
+              Select a Category
+            </option>
+this option. that why we are facing problem
+fix here 
+but you again and again for for useEffects and bla bla bla

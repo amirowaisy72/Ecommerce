@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import Title from "./Title/Index";
 import Category from "./Category/Index";
+import ProductType from './ProductType/Index'
 import Keywords from "./Keywords/Index";
 import ProductImages from "./ProductImages/Index";
 import ProductDescription from "./ProductDescription/Index";
@@ -14,6 +15,7 @@ const Index = () => {
   const [validationResults, setValidationResults] = useState({
     Title: { error: "Title field is required", data: "" },
     Category: { error: "Please select category", data: "" },
+    Type: { error: "Please select a type", data: "" },
     Keywords: { error: "Please add some keywords", data: "" },
     ProductImages: { error: "Please upload some product images", data: "" },
     ProductDescription: { error: "Please describe product", data: "" },
@@ -63,6 +65,7 @@ const Index = () => {
                 <div className="row">
                   <Title setValidationResults={setValidationResults} />
                   <Category setValidationResults={setValidationResults} />
+                  <ProductType setValidationResults={setValidationResults} />
                   <Keywords setValidationResults={setValidationResults} />
                   <ProductImages setValidationResults={setValidationResults} />
                   <ProductDescription

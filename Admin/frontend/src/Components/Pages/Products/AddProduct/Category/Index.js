@@ -1,105 +1,86 @@
 import React, { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 
 const Index = ({ setValidationResults }) => {
-  const [selectedCategory, setSelectedCategory] = useState("");
-  const [newCategory, setNewCategory] = useState("");
+  const [selectedCategoryData, setSelectedCategoryData] = useState({
+    parent: "",
+    child: "",
+  });
+
   const [categories, setCategories] = useState([
-    "Dairy, Bread & Eggs",
-    "Snacks & Munchies",
-    "Fruits & Vegetables",
+    {
+      parent: "",
+      children: ["Select a Category"],
+    },
+    {
+      parent: "Footwear",
+      children: ["Joggers", "Loafers", "Boot", "Sandals", "Chappal"],
+    },
+    {
+      parent: "Accessories",
+      children: ["Watches", "Airbirds", "Video Games"],
+    },
+    // Add more parent-child categories as needed
   ]);
 
   useEffect(() => {
     if (
-      selectedCategory === "Select a Category" ||
-      selectedCategory === "Add New Category" ||
-      selectedCategory === ""
+      selectedCategoryData.parent === "" ||
+      selectedCategoryData.child === ""
     ) {
-      const newCategory = {
+      const newCategoryValidation = {
         error: "Please select category",
-        data: selectedCategory,
+        data: selectedCategoryData,
       };
 
       setValidationResults((prevResults) => {
-        return { ...prevResults, Category: newCategory };
+        return { ...prevResults, Category: newCategoryValidation };
       });
     } else {
-      const newCategory = { error: "", data: selectedCategory };
+      const newCategoryValidation = { error: "", data: selectedCategoryData };
 
       setValidationResults((prevResults) => {
-        return { ...prevResults, Category: newCategory };
+        return { ...prevResults, Category: newCategoryValidation };
       });
     }
-  }, [selectedCategory, setValidationResults]);
+  }, [selectedCategoryData, setValidationResults]);
 
   const handleCategoryChange = (e) => {
-    setSelectedCategory(e.target.value);
-  };
+    const selectedValue = e.target.value;
+    const [parent, child] = selectedValue.split("|");
 
-  const handleNewCategoryChange = (e) => {
-    setNewCategory(e.target.value);
-  };
-
-  const handleAddNewCategory = () => {
-    if (newCategory.trim() !== "") {
-      setCategories((prevCategories) => [...prevCategories, newCategory]);
-      setSelectedCategory(newCategory); // Set selectedCategory to the newly added category
-    } else {
-      setSelectedCategory(""); // Reset the selected category to go back to "Product Category"
-    }
-    setNewCategory(""); // Reset the new category input field
+    setSelectedCategoryData({
+      parent: parent || "",
+      child: child || "",
+    });
   };
 
   return (
     <>
       {/* Product Category section */}
-      {selectedCategory !== "Add New Category" && (
-        <div className="mb-3 col-lg-6">
-          <label className="form-label">Product Category</label>
+      <div className="mb-3 col-lg-6">
+        <label className="form-label">Product Category</label>
+        <div className="d-flex">
           <select
             className="form-select"
-            value={selectedCategory}
+            value={`${selectedCategoryData.parent}|${selectedCategoryData.child}`}
             onChange={handleCategoryChange}
           >
-            <option value="" disabled>
-              Select a Category
-            </option>
-            <option
-              value="Add New Category"
-              style={{ fontWeight: "bold", color: "blue" }}
-            >
-              Add New Category
-            </option>
             {categories.map((category) => (
-              <option key={category} value={category}>
-                {category}
-              </option>
+              <optgroup label={category.parent} key={category.parent}>
+                {category.children.map((child) => (
+                  <option key={child} value={`${category.parent}|${child}`}>
+                    {child}
+                  </option>
+                ))}
+              </optgroup>
             ))}
           </select>
+          <Link to="/categories/addCategory" className="btn btn-primary ms-2">
+            +
+          </Link>
         </div>
-      )}
-
-      {/* Add New Category section */}
-      {selectedCategory === "Add New Category" && (
-        <div className="mb-3 col-lg-6">
-          <label className="form-label">Add New Category</label>
-          <div className="input-group">
-            <input
-              className="form-control"
-              type="text"
-              value={newCategory}
-              onChange={handleNewCategoryChange}
-            />
-            <button
-              className="btn btn-outline-secondary"
-              type="button"
-              onClick={handleAddNewCategory}
-            >
-              ➔
-            </button>
-          </div>
-        </div>
-      )}
+      </div>
     </>
   );
 };

@@ -104,7 +104,7 @@ const Index = ({ setCroppedImages }) => {
               onCropChange={setCrop}
               onZoomChange={setZoom}
               onCropComplete={onCropComplete}
-              cropSize={{ width: 300, height: 200 }}
+              cropSize={{ width: 286, height: 286 }}
             />
             <div style={{ width: "400px", height: "400px" }}></div>
           </div>
