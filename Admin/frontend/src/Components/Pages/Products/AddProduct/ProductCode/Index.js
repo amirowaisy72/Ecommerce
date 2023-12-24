@@ -1,9 +1,21 @@
 import React, { useEffect, useState } from "react";
 
-const Index = ({ setValidationResults = { setValidationResults } }) => {
+const Index = ({
+  setValidationResults = { setValidationResults },
+  resetForm,
+}) => {
   const [productCode, setProductCode] = useState("");
   const [productSKU, setProductSKU] = useState("");
   const [status, setStatus] = useState("Active");
+
+  //Reset data when product created
+  useEffect(() => {
+    if (resetForm) {
+      setProductCode("");
+      setProductSKU("");
+      setStatus("Active");
+    }
+  }, [resetForm]);
 
   useEffect(() => {
     if (productCode === "" || productSKU === "") {

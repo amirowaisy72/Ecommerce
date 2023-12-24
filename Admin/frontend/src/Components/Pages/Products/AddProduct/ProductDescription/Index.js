@@ -2,8 +2,15 @@ import React, { useEffect, useState } from "react";
 import ReactQuill from "react-quill";
 import "react-quill/dist/quill.snow.css"; // Import the styles
 
-const Index = ({ setValidationResults }) => {
+const Index = ({ setValidationResults, resetForm }) => {
   const [editorContent, setEditorContent] = useState("");
+
+  //Reset data when product created
+  useEffect(() => {
+    if (resetForm) {
+      setEditorContent("");
+    }
+  }, [resetForm]);
 
   useEffect(() => {
     if (editorContent === "") {

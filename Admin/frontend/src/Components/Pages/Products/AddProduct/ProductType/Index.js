@@ -1,7 +1,14 @@
 import React, { useEffect, useState } from 'react';
 
-const Index = ({ setValidationResults }) => {
+const Index = ({ setValidationResults, resetForm }) => {
   const [selectedType, setSelectedType] = useState("");
+
+  //Reset data when product created
+  useEffect(() => {
+    if (resetForm) {
+      setSelectedType("");
+    }
+  }, [resetForm]);
 
   useEffect(() => {
     if (selectedType === "Select an Option" || selectedType === "") {

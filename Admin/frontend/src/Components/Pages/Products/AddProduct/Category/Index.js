@@ -1,11 +1,21 @@
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 
-const Index = ({ setValidationResults }) => {
+const Index = ({ setValidationResults, resetForm }) => {
   const [selectedCategoryData, setSelectedCategoryData] = useState({
     parent: "",
     child: "",
   });
+
+  //Reset data when product created
+  useEffect(() => {
+    if (resetForm) {
+      setSelectedCategoryData({
+        parent: "",
+        child: "",
+      });
+    }
+  }, [resetForm]);
 
   const [categories, setCategories] = useState([
     {

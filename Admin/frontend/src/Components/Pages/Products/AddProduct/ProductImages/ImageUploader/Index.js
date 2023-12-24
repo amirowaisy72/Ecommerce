@@ -1,67 +1,20 @@
-import React, { useCallback, useState } from "react";
-import Cropper from "react-easy-crop";
+import React, { useState } from "react";
 
 const Index = ({ setCroppedImages }) => {
   const [image, setImage] = useState(null);
-  const [crop, setCrop] = useState({ x: 0, y: 0 });
-  const [zoom, setZoom] = useState(1);
-  const [croppedAreaPixels, setCroppedAreaPixels] = useState(null);
-
-  const onCropComplete = useCallback((croppedArea, croppedAreaPixels) => {
-    setCroppedAreaPixels(croppedAreaPixels);
-  }, []);
-
-  const getCroppedImg = useCallback(async () => {
-    try {
-      const img = new Image();
-      img.src = image;
-      img.crossOrigin = "anonymous";
-      img.onload = () => {
-        const canvas = document.createElement("canvas");
-        const ctx = canvas.getContext("2d");
-
-        canvas.width = croppedAreaPixels.width;
-        canvas.height = croppedAreaPixels.height;
-
-        ctx.drawImage(
-          img,
-          croppedAreaPixels.x,
-          croppedAreaPixels.y,
-          croppedAreaPixels.width,
-          croppedAreaPixels.height,
-          0,
-          0,
-          croppedAreaPixels.width,
-          croppedAreaPixels.height
-        );
-
-        // Get the cropped image as a data URL
-        const croppedImage = canvas.toDataURL("image/jpeg");
-
-        // Update the state to include the new cropped image
-        setCroppedImages((prevCroppedImages) => [
-          ...prevCroppedImages,
-          croppedImage,
-        ]);
-
-        setImage(null);
-      };
-    } catch (error) {
-      console.error("Error cropping image:", error);
-    }
-  }, [image, croppedAreaPixels]);
-
-  const onFileChange = (e) => {
-    const file = e.target.files[0];
-    handleImage(file);
-  };
 
   const handleImage = (file) => {
     const reader = new FileReader();
     reader.onload = () => {
+      // Update the state with the new image source
       setImage(reader.result);
     };
     reader.readAsDataURL(file);
+  };
+
+  const onFileChange = (e) => {
+    const file = e.target.files[0];
+    handleImage(file);
   };
 
   const onDrop = (e) => {
@@ -72,6 +25,16 @@ const Index = ({ setCroppedImages }) => {
 
   const onDragOver = (e) => {
     e.preventDefault();
+  };
+
+  const uploadImage = () => {
+    if (image) {
+      // Directly add the original image to the cropped images list
+      setCroppedImages((prevCroppedImages) => [...prevCroppedImages, image]);
+
+      // Reset the image state
+      setImage(null);
+    }
   };
 
   return (
@@ -95,28 +58,15 @@ const Index = ({ setCroppedImages }) => {
             style={{ display: "none" }}
           />
         </label>
-        {image && (
-          <div className="cropper-container">
-            <Cropper
-              image={image}
-              crop={crop}
-              zoom={zoom}
-              onCropChange={setCrop}
-              onZoomChange={setZoom}
-              onCropComplete={onCropComplete}
-              cropSize={{ width: 286, height: 286 }}
-            />
-            <div style={{ width: "400px", height: "400px" }}></div>
-          </div>
-        )}
-        {image && (
-          <div>
-            <button className="btn btn-success my-2" onClick={getCroppedImg}>
-              Upload Image
-            </button>
-          </div>
-        )}
       </div>
+
+      {image && (
+        <div>
+          <button className="btn btn-success my-2" onClick={uploadImage}>
+            Upload Image
+          </button>
+        </div>
+      )}
     </>
   );
 };

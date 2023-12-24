@@ -1,8 +1,15 @@
 import React, { useEffect, useState } from "react";
 
-const Index = ({ setValidationResults }) => {
+const Index = ({ setValidationResults, resetForm }) => {
   const [inputValue, setInputValue] = useState("");
   const [keywords, setKeywords] = useState([]);
+
+  //Reset data when product created
+  useEffect(() => {
+    if (resetForm) {
+      setKeywords([]);
+    }
+  }, [resetForm]);
 
   useEffect(() => {
     if (keywords.length === 0) {

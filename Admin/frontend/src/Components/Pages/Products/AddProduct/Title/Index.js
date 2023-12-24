@@ -1,7 +1,14 @@
 import React, { useEffect, useState } from "react";
 
-const Index = ({ setValidationResults }) => {
+const Index = ({ setValidationResults, resetForm }) => {
   const [title, setTitle] = useState("");
+
+  //Reset data when product created
+  useEffect(() => {
+    if (resetForm) {
+      setTitle("");
+    }
+  }, [resetForm]);
 
   useEffect(() => {
     if (title === "") {
@@ -22,8 +29,12 @@ const Index = ({ setValidationResults }) => {
   }, [title, setValidationResults]);
 
   const handleChange = (e) => {
-    const newTitle = e.target.value;
+    const newTitle = capitalizeFirstLetter(e.target.value);
     setTitle(newTitle);
+  };
+
+  const capitalizeFirstLetter = (str) => {
+    return str.replace(/\b\w/g, (char) => char.toUpperCase());
   };
 
   return (

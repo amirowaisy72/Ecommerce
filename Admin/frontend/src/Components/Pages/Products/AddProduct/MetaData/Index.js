@@ -1,8 +1,16 @@
 import React, { useEffect, useState } from "react";
 
-const Index = ({ setValidationResults }) => {
+const Index = ({ setValidationResults, resetForm }) => {
   const [metaTitle, setMetaTitle] = useState("");
   const [metaDescription, setMetaDescription] = useState("");
+
+  //Reset data when product created
+  useEffect(() => {
+    if (resetForm) {
+      setMetaTitle("");
+      setMetaDescription("");
+    }
+  }, [resetForm]);
 
   useEffect(() => {
     if (metaTitle === "" || metaDescription === "") {
@@ -27,11 +35,17 @@ const Index = ({ setValidationResults }) => {
   }, [metaTitle, metaDescription, setValidationResults]);
 
   const handleMetaTitleChange = (e) => {
-    setMetaTitle(e.target.value);
+    const newTitle = capitalizeFirstLetter(e.target.value);
+    setMetaTitle(newTitle);
   };
 
   const handleMetaDescriptionChange = (e) => {
-    setMetaDescription(e.target.value);
+    const newDescription = capitalizeFirstLetter(e.target.value);
+    setMetaDescription(newDescription);
+  };
+
+  const capitalizeFirstLetter = (str) => {
+    return str.replace(/\b\w/g, (char) => char.toUpperCase());
   };
 
   return (

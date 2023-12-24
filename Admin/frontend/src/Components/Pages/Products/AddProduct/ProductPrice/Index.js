@@ -1,8 +1,16 @@
 import React, { useEffect, useState } from "react";
 
-const Index = ({ setValidationResults }) => {
+const Index = ({ setValidationResults, resetForm }) => {
   const [regularPrice, setRegularPrice] = useState("");
   const [salePrice, setSalePrice] = useState("");
+
+  //Reset data when product created
+  useEffect(() => {
+    if (resetForm) {
+      setRegularPrice("");
+      setSalePrice("");
+    }
+  }, [resetForm]);
 
   useEffect(() => {
     if (regularPrice === "" || salePrice === "") {
@@ -28,14 +36,12 @@ const Index = ({ setValidationResults }) => {
 
   const handleRegularPriceChange = (e) => {
     const inputValue = e.target.value.replace(/\D/g, ""); // Remove non-numeric characters
-    const formattedValue = new Intl.NumberFormat("en-PK").format(inputValue); // Format as Rupees
-    setRegularPrice(formattedValue);
+    setRegularPrice(inputValue);
   };
 
   const handleSalePriceChange = (e) => {
     const inputValue = e.target.value.replace(/\D/g, ""); // Remove non-numeric characters
-    const formattedValue = new Intl.NumberFormat("en-PK").format(inputValue); // Format as Rupees
-    setSalePrice(formattedValue);
+    setSalePrice(inputValue);
   };
 
   return (

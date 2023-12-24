@@ -1,7 +1,14 @@
 import React, { useEffect, useState } from "react";
 
-const YourComponent = ({ setValidationResults }) => {
+const YourComponent = ({ setValidationResults, resetForm }) => {
   const [isChecked, setIsChecked] = useState(true);
+
+  //Reset data when product created
+  useEffect(() => {
+    if (resetForm) {
+      setIsChecked(true);
+    }
+  }, [resetForm]);
 
   useEffect(() => {
     // If title is not empty, remove the error
